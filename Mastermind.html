@@ -49,12 +49,12 @@ class Row {
 		}
 	}
 	
-	hasAllPegs = () => {
+	hasAllPegs() {
 		let anyNull = this.pegs.some((el) => el.colour == null);
 		return !anyNull;
 	}
 	
-	lastPegIndex = () => {
+	lastPegIndex() {
 		for (var idx=this.pegs.length-1; idx>-1; idx--) {
 			if (this.pegs[idx].colour != null) {
 				return idx;
@@ -63,7 +63,7 @@ class Row {
 		return -1;
 	}
 	
-	firstEmptyPeg = () => {
+	firstEmptyPeg() {
 		for (var idx=0; idx<this.pegs.length; idx++) {
 			if (this.pegs[idx].colour == null) {
 				return idx;
@@ -72,17 +72,17 @@ class Row {
 		return -1;
 	}
 	
-	hasEmptyPeg = () => {
+	hasEmptyPeg() {
 		return this.firstEmptyPeg() > -1;
 	}
 	
-	hasAnyPegs = () => {
+	hasAnyPegs() {
 		//let anyPegs = this.pegs.some((el) => el.colour != null);
 		let anyPegs = this.lastPegIndex() != -1;
 		return anyPegs;
 	}
 	
-	isCorrect = () => {
+	isCorrect() {
 		var allBlack = true;
 		this.resultPegs.forEach((peg, idx) => {
 			if (peg.colour != 2) {
@@ -92,7 +92,7 @@ class Row {
 		return allBlack;
 	}
 
-	draw = () => {
+	draw() {
 		// The row background
 		var grd = ctx.createLinearGradient(0, boardOrigin[1]+this.idxRow*rowHeight, 0, boardOrigin[1]+this.idxRow*rowHeight + rowHeight);
 		//grd.addColorStop(0, "white");
@@ -170,7 +170,7 @@ class Peg {
 		this.row = row;
 	}
 	
-	draw = (idxRow) => {
+	draw(idxRow) {
 		// Draw the main section
 		if (!this.result) {
 			ctx.beginPath();
